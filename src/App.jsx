@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Menu, X, Home, Settings, LogOut, BarChart3, Clock, CheckCircle, Lightbulb } from 'lucide-react';
+import { BookOpen, Menu, X, Home, Settings, LogOut, BarChart3, Clock, CheckCircle, Lightbulb, Sparkles, ArrowRight, FileText, Target, TrendingUp, ShieldCheck } from 'lucide-react';
 import './App.css';
 
 export default function ExamPrepApp() {
@@ -522,37 +522,117 @@ export default function ExamPrepApp() {
 
   const LandingScreen = () => {
     const [name, setName] = useState('');
+
+    const handleStart = () => {
+      if (name.trim()) {
+        setUser({ name });
+        setCurrentScreen('dashboard');
+      }
+    };
+
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-500 via-blue-500 to-purple-600 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
-          <div className="text-center mb-8">
-            <BookOpen className="w-16 h-16 text-green-600 mx-auto mb-4" />
-            <h1 className="text-3xl font-bold text-gray-800">ExamPrep NG</h1>
-            <p className="text-gray-600 mt-2">Master JAMB Exams Easily</p>
-          </div>
+      <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(34,197,94,0.22),_transparent_35%),linear-gradient(135deg,_#f0fdf4_0%,_#eff6ff_50%,_#f5f3ff_100%)] text-slate-800">
+        <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+          <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-600 text-white">
+                <BookOpen className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-slate-900">ExamPrep NG</p>
+                <p className="text-sm text-slate-500">Study smarter</p>
+              </div>
+            </div>
+            <div className="hidden items-center gap-2 rounded-full bg-slate-900 px-3 py-2 text-sm font-medium text-white sm:flex">
+              <Sparkles className="h-4 w-4" />
+              AI-style revision support
+            </div>
+          </header>
 
-          <div className="space-y-4">
-            <input
-              type="text"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
-            />
-            <button
-              onClick={() => {
-                if (name.trim()) {
-                  setUser({ name });
-                  setCurrentScreen('dashboard');
-                }
-              }}
-              className="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition"
-            >
-              Get Started
-            </button>
-          </div>
+          <main className="flex flex-1 items-center py-10 lg:py-16">
+            <div className="grid w-full gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+              <section className="space-y-8">
+                <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-3 py-2 text-sm font-medium text-green-700">
+                  <Target className="h-4 w-4" />
+                  Practice with confidence
+                </div>
 
-          <p className="text-center text-sm text-gray-600 mt-6">Free access to practice questions</p>
+                <div className="space-y-4">
+                  <h1 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                    Turn exam prep into a clear, stress-free routine.
+                  </h1>
+                  <p className="max-w-2xl text-lg leading-8 text-slate-600">
+                    Study with structured practice questions, upload your own notes, and build confidence across core subjects before exam day.
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleStart()}
+                    className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-200 sm:max-w-xs"
+                  />
+                  <button
+                    onClick={handleStart}
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-green-600 px-5 py-3 font-semibold text-white transition hover:bg-green-700"
+                  >
+                    Start learning
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm">
+                    <p className="text-2xl font-bold text-slate-900">5+</p>
+                    <p className="text-sm text-slate-600">Subjects</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm">
+                    <p className="text-2xl font-bold text-slate-900">100%</p>
+                    <p className="text-sm text-slate-600">Practice focus</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-sm">
+                    <p className="text-2xl font-bold text-slate-900">24/7</p>
+                    <p className="text-sm text-slate-600">Learning access</p>
+                  </div>
+                </div>
+              </section>
+
+              <aside className="rounded-[2rem] border border-slate-200 bg-slate-900 p-6 text-white shadow-2xl shadow-slate-900/20">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-full bg-white/10 p-2">
+                    <FileText className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold">Everything you need</p>
+                    <p className="text-sm text-slate-300">A focused prep experience in one place</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 space-y-4">
+                  {[
+                    { icon: ShieldCheck, title: 'Smart practice', text: 'Work through subject-based questions with instant feedback.' },
+                    { icon: TrendingUp, title: 'Track progress', text: 'Review saved exams and monitor your improvement over time.' },
+                    { icon: BookOpen, title: 'Upload and extract', text: 'Turn study notes into structured revision content quickly.' }
+                  ].map((item) => (
+                    <div key={item.title} className="rounded-2xl border border-white/10 bg-white/10 p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="rounded-full bg-green-500/20 p-2 text-green-300">
+                          <item.icon className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <p className="font-semibold">{item.title}</p>
+                          <p className="mt-1 text-sm text-slate-300">{item.text}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
+          </main>
         </div>
       </div>
     );
