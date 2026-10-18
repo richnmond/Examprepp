@@ -20,4 +20,19 @@ body {
   animation: spin 1s linear infinite;
 }
 
+@keyframes portal-view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portal-view-enter {
+  animation: portal-view-enter 180ms ease-out;
+}
+
 /* Tailwind will handle most styling */
