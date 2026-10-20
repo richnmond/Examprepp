@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Bell, BookOpen, LogOut, Moon, Sun } from 'lucide-react';
+import { Bell, LogOut, Moon, Sun } from 'lucide-react';
 import PortalOverview from './PortalOverview';
 import PortalModules from './PortalModules';
 import PortalSidebar from './PortalSidebar';
 import { portalNavigation } from './portalData';
+import BrandMark from '../BrandMark';
 
 export default function SchoolPortal({ user, questionBank, onLogout }) {
   const [role, setRole] = useState('Student');
@@ -36,7 +37,7 @@ export default function SchoolPortal({ user, questionBank, onLogout }) {
       <main className="min-w-0 flex-1">
         <header className={`sticky top-0 z-10 border-b px-5 py-4 backdrop-blur ${darkMode ? 'border-slate-800 bg-slate-900/90' : 'border-slate-200 bg-white/90'}`}>
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-            <div className="flex items-center gap-3"><div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white lg:hidden"><BookOpen className="h-4 w-4" /></div><div><p className="text-sm font-semibold text-emerald-600">{role} workspace</p><h1 className="text-2xl font-black">{section}</h1></div></div>
+            <div className="flex items-center gap-3"><BrandMark className="h-9 w-9 shrink-0 lg:hidden" /><div><p className="text-sm font-semibold text-emerald-600">{role} workspace</p><h1 className="text-2xl font-black">{section}</h1></div></div>
             <div className="flex items-center gap-2"><span className="hidden text-sm text-slate-500 sm:block">Hi, {user?.name || 'learner'}</span><button onClick={() => setDarkMode(!darkMode)} className="rounded-xl border p-2" title="Toggle dark mode">{darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}</button><button onClick={() => setSection('Notifications')} className="relative rounded-xl border p-2"><Bell className="h-4 w-4" /><span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-red-500" /></button><button onClick={onLogout} className="rounded-xl border p-2" title="Log out"><LogOut className="h-4 w-4" /></button></div>
           </div>
         </header>

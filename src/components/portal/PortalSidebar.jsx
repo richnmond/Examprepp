@@ -2,7 +2,6 @@ import React from 'react';
 import {
   BarChart3,
   Bell,
-  BookOpen,
   CalendarDays,
   CheckCircle,
   ClipboardCheck,
@@ -22,6 +21,7 @@ import {
   WalletCards
 } from 'lucide-react';
 import { portalNavigation } from './portalData';
+import BrandMark from '../BrandMark';
 
 const icons = {
   dashboard: LayoutDashboard,
@@ -49,8 +49,8 @@ export default function PortalSidebar({ role, onRoleChange, section, onSectionCh
   return (
     <aside className={`hidden w-64 shrink-0 border-r p-5 lg:block ${darkMode ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-white'}`}>
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white"><BookOpen className="h-5 w-5" /></div>
-        <div><p className="font-black">ExamPrep NG</p><p className="text-xs text-slate-500">School operations</p></div>
+        <BrandMark className="h-10 w-10 shrink-0" />
+        <div><p className="font-black">Examprepp</p><p className="text-xs text-slate-500">School operations</p></div>
       </div>
       <div className="mt-7 rounded-xl bg-slate-100 p-2">
         <p className="px-2 text-xs font-bold uppercase text-slate-500">Workspace</p>
